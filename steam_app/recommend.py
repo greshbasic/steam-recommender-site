@@ -36,17 +36,19 @@ def display_recommendations(game_name):
         data = response.json()
         app_list = data["applist"]["apps"]
         appid = None
+        image_url = None
         for app in app_list:
             if app["name"] == game_name:
                 appid = app["appid"]
                 break
         if appid:
             game_url = f"https://store.steampowered.com/app/{appid}/{format_game_name_for_url(game_name)}/"
-            return (game_name, game_url)
+            image_url = f"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/{appid}/header.jpg"
+            return (game_name, game_url, image_url)
         else:
-            return (game_name, None)
+            return (game_name, None, image_url)
     else:
-        return (game_name, None)
+        return (game_name, None, image_url)
         
 def determine_tags_for_user(steam_id):
     games = get_games_from_user(int(steam_id))

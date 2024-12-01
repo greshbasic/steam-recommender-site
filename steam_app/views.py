@@ -27,7 +27,7 @@ last_used_steam_id = NEBULA_ID
 # Create your views here.
 def home(request):
     global last_used_steam_id
-    game, link = None, None
+    game, game_link, game_cover = None, None, None
     if request.method == 'POST' or 'recommend_another' in request.POST:
         steam_id = request.POST.get('user_input', '')
         if steam_id:
@@ -36,8 +36,10 @@ def home(request):
             steam_id = last_used_steam_id
         connect_to_db()
         user_exists, tags = check_if_user_exists(steam_id)
-        game, link = handle_recommendation(steam_id, user_exists, tags)
+        game, game_link, game_cover = handle_recommendation(steam_id, user_exists, tags)
         print(game)
-        print(link)
+        print(game_link)
+        print(game_cover)
+        
   
-    return render(request, 'steam_app/input_form.html', {'game': game, 'link': link})
+    return render(request, 'steam_app/input_form.html', {'game': game, 'link': game_link, 'cover': game_cover})

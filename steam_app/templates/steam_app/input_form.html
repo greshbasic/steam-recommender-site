@@ -13,7 +13,11 @@
 
     {% if game %}
         <h2>Recommendation Result:</h2>
+        <h3> Based on your play history...</h1>
         <p>I recommend: {{ game }}</p>
+        {% if cover %}
+            <img src="{{ cover }}" alt="Game Image">
+        {% endif %}
         {% if link %}
             <p>Check it out <a href="{{ link }}">here</a></p>
         {% endif %}
