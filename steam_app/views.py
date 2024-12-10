@@ -8,21 +8,9 @@ import requests
 from bs4 import BeautifulSoup
 from steam_app.db_utils import connect_to_db, check_if_user_exists
 from steam_app.recommend import handle_recommendation
+from steam_app.config import POSTGRES_CONFIG, STEAM_API_KEY
 
-
-POSTGRES_CONFIG = {
-    "dbname": "steam_users_db",
-    "user": "gresh",
-    "password": "dog123",
-    "host": "localhost",
-    "port": 5432
-}
-
-STEAM_API_KEY = "D7174380011DF58873E47B87D86A8CA7"
-
-NEBULA_ID = "76561199521687451"
-
-last_used_steam_id = NEBULA_ID
+last_used_steam_id = "76561199521687451" // my id!
 
 # Create your views here.
 def home(request):
