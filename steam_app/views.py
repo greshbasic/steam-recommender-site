@@ -12,7 +12,6 @@ from steam_app.config import POSTGRES_CONFIG, STEAM_API_KEY
 
 last_used_steam_id = "76561199521687451" // my id!
 
-# Create your views here.
 def home(request):
     global last_used_steam_id
     game, game_link, game_cover = None, None, None
